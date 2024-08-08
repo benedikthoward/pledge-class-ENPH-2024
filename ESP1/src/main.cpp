@@ -59,7 +59,7 @@ void loop() {
   } else {
     Serial.println("Looping");
   }
-
+  delay(50);
   // delay(1000); // Consider reducing or removing this delay
 }
 

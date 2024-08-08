@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <WiFi.h>
-#include <esp_now.h>
 #include <AsyncTCP.h>
 
 #include "main.h"
@@ -13,7 +12,6 @@ AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
 const char* ssid = "iPhone von Benedikt";
 const char* password = "gabi1234";
-uint8_t broadcastAddress[] = {0x24, 0x6F, 0x28, 0xA5, 0xB6, 0xC7};
 
 // function declaration
 void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len);

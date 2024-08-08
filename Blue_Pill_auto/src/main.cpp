@@ -12,8 +12,8 @@ Path* to_execute = new  Path("Start", "Start");;
 
 void setup() {
     // Set up motor PWM and digital outpuasc t pins for motor control
-    // setup_switch_interrupts();
-    // setupPWM();
+    setup_switch_interrupts();
+    setupPWM();
 
     Serial3.begin(9600); // begin communication with ESP32
     to_execute->done = true;
@@ -28,6 +28,7 @@ void setup() {
 
 
 void loop() {
+    
 
     if (Serial3.available()) {
         String message = Serial3.readStringUntil('\n');
@@ -37,7 +38,6 @@ void loop() {
         if ((!begin_move.equalsIgnoreCase(end_move))&&(to_execute->done)) {
             delete to_execute;
             to_execute = new Path(begin_move, end_move);
-
         } else if (!to_execute->done) {
             to_execute->execute();
         }else{
@@ -51,6 +51,4 @@ void loop() {
         }
     }
     updateMotorSpeed();
-    Serial3.println("looped");
-    delay(50);
 }
